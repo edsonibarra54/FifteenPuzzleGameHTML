@@ -3,7 +3,43 @@
         <script type="text/javascript" src="js/functionality.js"></script>
         <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
+    <body onload="begin()">
+        <div class="title">Imposible</div>
+        <div class="sections">
+            <div class="board">
+                <div id="00" onclick="flipBox('0','0')"></div>
+                <div id="01" onclick="flipBox('0','1')"></div>
+                <div id="02" onclick="flipBox('0','2')"></div>
+                <div id="03" onclick="flipBox('0','3')"></div>
+                
+                <div id="10" onclick="flipBox('1','0')"></div>
+                <div id="11" onclick="flipBox('1','1')"></div>
+                <div id="12" onclick="flipBox('1','2')"></div>
+                <div id="13" onclick="flipBox('1','3')"></div>
+                
+                <div id="20" onclick="flipBox('2','0')"></div>
+                <div id="21" onclick="flipBox('2','1')"></div>
+                <div id="22" onclick="flipBox('2','2')"></div>
+                <div id="23" onclick="flipBox('2','3')"></div>
+
+                <div id="30" onclick="flipBox('3','0')"></div>
+                <div id="31" onclick="flipBox('3','1')"></div>
+                <div id="32" onclick="flipBox('3','2')"></div>
+                <div id="33" onclick="flipBox('3','3')"></div>
+            </div>
+            <div class="counters">
+                <div>Player's name:</div>
+                <b><span class="name">No player</span></b>
+                <div class="count">
+                    <div>Time:</div>
+                    <b><span class="time">00</span></b>
+                </div>
+                <div class="count">
+                    <div>Moves:</div>
+                    <b><span class="moves">00</span></b>
+                </div>
+            </div>
+        </div>
         
     </body>
 </html>
