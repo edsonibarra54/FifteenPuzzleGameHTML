@@ -25,6 +25,13 @@ body{
     background-color: #353435;
     color: white;
     float: left;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5em;
+    font-weight: bolder;
 }
 
 .counters{
