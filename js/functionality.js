@@ -1,8 +1,7 @@
 var tam = 4;
 var board;
 
-const values = Array.from({ length: 15 }, (_, i) => i + 1);
-values.push(0);
+const values = Array.from({ length: 16 }, (_, i) => i + 1);
 
 var name;
 var timer;
@@ -14,8 +13,8 @@ function begin(){
     var value;
     var divElement;
 
-    //name = prompt("Whats your name?")
-    //document.getElementsByClassName("name")[0].innerHTML = name;
+    name = prompt("Whats your name?")
+    document.getElementsByClassName("name")[0].innerHTML = name;
 
     //Creating board
     board = new Array(tam);
@@ -31,7 +30,7 @@ function begin(){
             board[i][j] = value;
             document.getElementById(i.toString()+j.toString()).innerHTML = value
 
-            if(value == 0){
+            if(value == 16){
                 divElement = document.getElementById(i.toString()+j.toString());
                 divElement.style.backgroundColor = "white";
             }
@@ -62,11 +61,11 @@ function moveBox(posI, posJ){
     
     //Top
     if(j - 1 >= 0)
-        if(board[i][j-1] == 0){
+        if(board[i][j-1] == 16){
             divElement = document.getElementById(posI+posJ);
             divNextElement = document.getElementById(i.toString()+(j-1).toString())
             board[i][j-1] = board[i][j]; 
-            board[i][j] = 0;
+            board[i][j] = 16;
             document.getElementById(posI+posJ).innerHTML = board[i][j];
             document.getElementById(i.toString()+(j-1).toString()).innerHTML = board[i][j-1];
             divNextElement.style.backgroundColor = "#353435";
@@ -78,11 +77,11 @@ function moveBox(posI, posJ){
     
     //Bottom
     if(j + 1 < tam)
-        if(board[i][j+1] == 0){
+        if(board[i][j+1] == 16){
             divElement = document.getElementById(posI+posJ);
             divNextElement = document.getElementById(i.toString()+(j+1).toString())
             board[i][j+1] = board[i][j]; 
-            board[i][j] = 0;
+            board[i][j] = 16;
             document.getElementById(posI+posJ).innerHTML = board[i][j];
             document.getElementById(i.toString()+(j+1).toString()).innerHTML = board[i][j+1];
             divNextElement.style.backgroundColor = "#353435";
@@ -94,11 +93,11 @@ function moveBox(posI, posJ){
 
     //Left
     if(i - 1 >= 0)
-        if(board[i-1][j] == 0){
+        if(board[i-1][j] == 16){
             divElement = document.getElementById(posI+posJ);
             divNextElement = document.getElementById((i-1).toString()+j.toString())
             board[i-1][j] = board[i][j]; 
-            board[i][j] = 0;
+            board[i][j] = 16;
             document.getElementById(posI+posJ).innerHTML = board[i][j];
             document.getElementById((i-1).toString()+j.toString()).innerHTML = board[i-1][j];
             divNextElement.style.backgroundColor = "#353435";
@@ -110,11 +109,11 @@ function moveBox(posI, posJ){
 
     //Right
     if(i + 1 < tam)
-        if(board[i+1][j] == 0){
+        if(board[i+1][j] == 16){
             divElement = document.getElementById(posI+posJ);
             divNextElement = document.getElementById((i+1).toString()+j.toString())
             board[i+1][j] = board[i][j]; 
-            board[i][j] = 0;
+            board[i][j] = 16;
             document.getElementById(posI+posJ).innerHTML = board[i][j];
             document.getElementById((i+1).toString()+j.toString()).innerHTML = board[i+1][j];
             divNextElement.style.backgroundColor = "#353435";
@@ -123,4 +122,38 @@ function moveBox(posI, posJ){
             moves++;
             document.getElementsByClassName("moves")[0].innerHTML = moves;
         }
+
+    if(won() == true){
+        alert("You won! Time: " + seconds + " Moves: " + moves);
+    }
+}
+
+function won(){
+    var r = 0;
+    for(var i = 0 ; i < tam ; i++)
+        for(var j = 0 ; j < tam ; j++){
+            r++;
+            if(board[i][j] != r)
+                return false;
+        }
+
+    return true;
+}
+
+function prueba(){
+    var div;
+    var r = 0;
+    for(var i = 0 ; i < tam ; i++)
+        for(var j = 0 ; j < tam ; j++){
+            r++;
+            board[i][j] = r;
+            document.getElementById(i.toString()+j.toString()).innerHTML = r
+        }
+
+    board[3][3] = 15;
+    document.getElementById("33").innerHTML = 15
+    board[3][2] = 16;
+    document.getElementById("32").innerHTML = 16
+    div = document.getElementById("32");
+    div.style.backgroundColor = "white";
 }
